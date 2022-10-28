@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="refresh" content="10">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'style.css' %}">
+    <title>Token</title>
+</head>
+
+<body>
+    <div class="container upbar">
+        
+            <div style="width: 70%;height:100%;margin:auto;">
+                <h1>Craft Hospital</h1>
+            </div>
+    </div>
+    <div class="table-container">
+        <div class="main-container">
+            <table>
+                <tr>
+                    <th style="font-size:20px;color:white">Waiting List</th>
+                </tr>
+                {%for token in call_token|slice:":4" %}
+                <tr>
+                    <th>{{token.Tokens}}</th>
+                </tr>
+                {%endfor%}
+
+            </table>
+        </div>
+        <div class="subcontainer">
+            <table>
+                <tr>
+
+                    <th style="height: 20%;font-size: 40px;">Now Serving</th>
+                </tr>
+                <tr class="anima" id="auto">
+                    <th style="height: 80%;font-size: 200px;">
+                        {{token_call}}
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        //setInterval('autoRefresh()', 2000);
+        window.setInterval('refresh()', 2000); 	
+        // Call a function every 10000 milliseconds 
+        // (OR 10 seconds).
+    
+        // Refresh or reload page.
+        function refresh() {
+            window .location.reload();
+        }
+    </script>
+</body>
+
+</html>
