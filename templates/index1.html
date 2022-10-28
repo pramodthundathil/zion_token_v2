@@ -9,6 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{%static 'style.css' %}">
     <title>Token</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        body::-webkit-scrollbar{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,8 +26,36 @@
                 <h1>Craft Hospital</h1>
             </div>
     </div>
-    <div class="table-container">
-        <div class="main-container">
+    <div class="table">
+        <table>
+            <tr>
+                <th>Waiting List</th>
+                <th style="width: 70%;">Now Serving
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div class="table table-last">
+        <table>
+            <tr>
+                <th></th>
+                <th style="width: 70%;font-size: 300px;
+                " rowspan="5" class="anima" id="auto">
+                   
+                    {{token_call}}
+                </th>
+            </tr>
+          
+                {%for token in call_token|slice:":4" %}
+                <tr>
+                <th>{{token.Tokens}}</th>
+            </tr>
+                {%endfor%}
+        </table>
+
+    </div>
+    
+        <!-- <div class="main-container">
             <table>
                 <tr>
                     <th style="font-size:20px;color:white">Waiting List</th>
@@ -44,8 +80,8 @@
                     </th>
                 </tr>
             </table>
-        </div>
-    </div>
+        </div> -->
+    
     <script>
         //setInterval('autoRefresh()', 2000);
         window.setInterval('refresh()', 2000); 	
